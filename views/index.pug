@@ -1,0 +1,58 @@
+doctype html 
+html 
+    head 
+        title Sid Dance Academy 
+        style 
+            include ../static/style.css 
+    body 
+        nav#navbar 
+            ul 
+                #logo 
+                    img(src="../static/logo1.png")
+                    | SDA 
+                li #[a(href="/") Home] 
+                li #[a(href="/") About]
+                li #[a(href="/") Contact Us]
+                li #[a(href="/") Class Info]
+                li #[a(href="/") Services]
+        
+        section#introSection
+            div Welcome to Sid's Dance Academy
+            div.small Eat Sleep Dance Repeat
+
+        section#missionSection
+            h2 Our Mission 
+            .card 
+                h3 Dance Perfection
+                div.card-box 
+                    div.card-img
+                        img(src="../static/logo2.png")
+                    div.card-content 
+                        p This is the best academy in our city  
+            .card 
+                h3 Dance the way like 
+                div.card-box 
+                    div.card-img
+                        img(src="../static/logo5.png")
+                    div.card-content 
+                        p This is the best academy in our city 
+            .card 
+                h3 Expert Teaching 
+                div.card-box 
+                    div.card-img
+                        img(src="../static/logo4.png")
+                    div.card-content 
+                        p This is the best academy in our city 
+
+        section#sponsorsSection
+            h2 Our Sponsors
+            #sponsors 
+                img(src="../static/sp5.png", alt="sponsor logo" Class="spImage")
+                img(src="../static/sp2.png", alt="sponsor logo" Class="spImage")
+                img(src="../static/sp3.png", alt="sponsor logo" Class="spImage")
+                img(src="../static/sp4.png", alt="sponsor logo" Class="spImage")
+
+        footer#footer
+            | Copyright © 2021 SiddhantDanceAcademy.com | All rights are reserved
+        script 
+            include ../static/index.js 

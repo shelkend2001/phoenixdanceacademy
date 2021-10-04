@@ -1,0 +1,47 @@
+extends base.pug
+
+block scripts 
+    script(src='/static/index.js')
+
+block style 
+    style 
+        include ../static/style.css 
+
+block content     
+    section#introSection
+        div Welcome to Sid's Dance Academy
+        div.small Eat Sleep Dance Repeat
+    
+    section#missionSection
+        h2 Our Mission 
+        .card
+            h3 Dance Perfection
+            div.card-box 
+                div.card-img
+                    img(src="../static/logo2.png")
+                div.card-content 
+                    p This is the best academy in our city  
+        .card 
+            h3 Dance the way like 
+            div.card-box 
+                div.card-img
+                    img(src="../static/logo5.png")
+                div.card-content 
+                    p This is the best academy in our city 
+        .card 
+            h3 Expert Teaching 
+            div.card-box 
+                div.card-img
+                    img(src="../static/logo4.png")
+                div.card-content 
+                    p This is the best academy in our city 
+
+    section#sponsorsSection
+        h2 Our Sponsors
+        #sponsors 
+            img(src="../static/sp5.png", alt="sponsor logo" Class="spImage")
+            img(src="../static/sp2.png", alt="sponsor logo" Class="spImage")
+            img(src="../static/sp3.png", alt="sponsor logo" Class="spImage")
+            img(src="../static/sp4.png", alt="sponsor logo" Class="spImage")
+
+    
