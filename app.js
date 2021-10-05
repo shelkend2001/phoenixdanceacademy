@@ -1,26 +1,25 @@
 const express = require("express");
 require("dotenv").config();
 const bodyparser = require("body-parser");
-const mongoose = require("mongoose");
-mongoose.connect(`mongodb+srv://${process.env.MONGOAUTHUSER}:${process.env.MONGOAUTHPASS}@cluster0.ep40l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const MongoClient = require("mongodb").MongoClient;
+
+var database, collection;
+// mongoose.connect(``, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// }, (error, client) => {
+//   if (error) {
+//     throw error;
+//   }
+
+//   database = client.use("DanceAcademy")
+//   collection = database.collection("contactrequests");
+// });
 
 const path = require("path");
 const app = express();
 
 const port = process.env.PORT || 8000;
-
-//define mongoose schema
-var contactSchema = new mongoose.Schema({
-  name: String,
-  phone: String,
-  email: String,
-  address: String,
-  desc: String,
-});
-var Contact = mongoose.model("Contact", contactSchema);
 
 app.use("/static", express.static("static")); //for seerving static file
 app.use(express.urlencoded({ extended: true }));
@@ -42,16 +41,24 @@ app.get("/contact", (req, res) => {
 
 app.post("/contact", (req, res) => {
   req.setTimeout(120000);
-  var myData = new Contact(req.body);
-  myData.save().then(() => {
-    res.send("This item is saved to database");
-  })
-    .catch(() => {
+  collection.insert(req.body, (error, result) => {
+    if (error) {
       res.status(400).send("This item was not saved to database");
-    });
-  // res.status(200).render("contact.pug");
+    }
+    else {
+      res.send("This item is saved to database");
+    }
+  })
 });
 
 app.listen(port, () => {
+  MongoClient.connect(process.env.CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
+    if (error) {
+      throw error;
+    }
+    database = client.db(process.env.DATABASE_NAME);
+    collection = database.collection("people");
+    console.log("Connected to `" + process.env.DATABASE_NAME + "`!");
+  });
   console.log(`The application started successfully on port : ${port}`);
 });
