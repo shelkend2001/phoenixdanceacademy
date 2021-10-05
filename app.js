@@ -6,8 +6,10 @@ mongoose.connect(`mongodb+srv://${process.env.MONGOAUTHUSER}:${process.env.MONGO
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 const path = require("path");
 const app = express();
+
 const port = process.env.PORT || 8000;
 
 //define mongoose schema
@@ -39,10 +41,11 @@ app.get("/contact", (req, res) => {
 });
 
 app.post("/contact", (req, res) => {
+  req.setTimeout(10000);
   var myData = new Contact(req.body);
   myData.save().then(() => {
-      res.send("This item is saved to database");
-    })
+    res.send("This item is saved to database");
+  })
     .catch(() => {
       res.status(400).send("This item was not saved to database");
     });
