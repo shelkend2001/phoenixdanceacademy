@@ -41,7 +41,7 @@ app.get("/contact", (req, res) => {
 });
 
 app.post("/contact", (req, res) => {
-  req.setTimeout(10000);
+  req.setTimeout(120000);
   var myData = new Contact(req.body);
   myData.save().then(() => {
     res.send("This item is saved to database");
