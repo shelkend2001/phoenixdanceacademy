@@ -74,7 +74,8 @@
 }
 .card h3 {
     text-align: center;
-    margin: 15px 12px;
+    margin: 17px 12px;
+    font-size:x-large;
     font-family: Arial, Helvetica, sans-serif;
 }
 .card-box{
@@ -83,18 +84,17 @@
     justify-content:space-between;
 }
 .card-img{
-    height: 121px;
+    height: 111px;
     padding: 0 5px;
-    margin: 5px 5px;
+    margin: 5px 1px;
 }
 .card-img img{
     height:inherit;
 }
 .card-content{
-    padding: 0px 10px;
-}
-.card-content{
-    font-size: 19px;
+    padding: 10px 5px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #sponsorsSection{
